@@ -16,22 +16,20 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
-import { RegisterOptions } from 'react-hook-form/dist/types/validator'
-import React, { Fragment } from 'react'
-import { Variant } from '@mui/material/styles/createTypography'
-import { AutocompleteInputChangeReason } from '@mui/base/useAutocomplete/useAutocomplete'
-
+import { RegisterOptions } from 'react-hook-form'
+import React from 'react'
+import { AutocompleteInputChangeReason } from '@mui/material'
+import { Icono } from '../Icono'
+import { imprimir } from '../../utils/imprimir'
+import { optionType } from './FormInputDropdown'
 import { OutlinedInputProps } from '@mui/material/OutlinedInput'
-import { Icono } from '@/components/Icono'
-import { imprimir } from '@/utils/imprimir'
-import { optionType } from '@/components/form/FormInputDropdown'
 
 export type CustomOptionType<K> = K & { key: string }
 
 type FormInputDropdownAutocompleteProps<
   K,
   TFieldValues extends FieldValues,
-  TName extends FieldPath<TFieldValues>,
+  TName extends FieldPath<TFieldValues>
 > = {
   id: string
   name: TName
@@ -71,13 +69,13 @@ type FormInputDropdownAutocompleteProps<
   selectOnFocus?: boolean
   options: CustomOptionType<K>[]
   disableClearable?: boolean
-  labelVariant?: Variant
+  labelVariant?: any
 }
 
 export const FormInputAutocomplete = <
   K,
   TFieldValues extends FieldValues,
-  TName extends FieldPath<TFieldValues>,
+  TName extends FieldPath<TFieldValues>
 >({
   id,
   name,

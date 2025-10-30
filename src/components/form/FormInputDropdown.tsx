@@ -14,10 +14,8 @@ import {
   SelectChangeEvent,
   Typography,
 } from '@mui/material'
-import { RegisterOptions } from 'react-hook-form/dist/types/validator'
-import React from 'react'
-import { Variant } from '@mui/material/styles/createTypography'
-import { Icono } from '@/components/Icono'
+import { RegisterOptions } from 'react-hook-form'
+import { Icono } from '../Icono'
 
 export interface optionType {
   key: string
@@ -27,7 +25,7 @@ export interface optionType {
 
 type FormInputDropdownProps<
   TFieldValues extends FieldValues,
-  TName extends FieldPath<TFieldValues>,
+  TName extends FieldPath<TFieldValues>
 > = {
   id: string
   name: TName
@@ -43,12 +41,12 @@ type FormInputDropdownProps<
   clearable?: boolean
   bgcolor?: string
   options: optionType[]
-  labelVariant?: Variant
+  labelVariant?: any
 }
 
 export const FormInputDropdown = <
   TFieldValues extends FieldValues,
-  TName extends FieldPath<TFieldValues>,
+  TName extends FieldPath<TFieldValues>
 >({
   id,
   name,

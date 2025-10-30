@@ -17,6 +17,11 @@ const Iconify = forwardRef<SVGElement, Props>(
         width,
         height: width,
         color,
+        '& svg': {
+          display: 'block',
+          color: 'inherit',
+          fill: 'currentColor',
+        },
         ...sx,
       }}
       {...other}
