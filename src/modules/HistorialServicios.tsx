@@ -18,9 +18,9 @@ import {
 import { useAlertaProgreso } from '../hooks/useAlertaProgreso'
 import Iconify from '../components/Iconify'
 import { Icons } from '../types/icon.types'
-import { AppBarWS } from './AppBarWS'
 import { CardWS } from './CardWS'
 import { toast } from 'sonner'
+import { AppBarWS } from './AppBarWS'
 
 interface IProps {
   token: string
@@ -89,11 +89,12 @@ export const HistorialServicios = ({ token, inhabilitarAcceso }: IProps) => {
 
   return (
     <Box minHeight="100dvh" sx={{ bgcolor: ColorCiudadania.light }}>
-      <pre>{token}</pre>
       <Box px={2} py={4}>
         <Typography variant="h4" fontWeight="600" color="white">
           Historial de accesos a mis datos
         </Typography>
+        TOKEN TOKEN
+        <pre>{token}</pre>
       </Box>
       <Box
         px={{ xs: 2, md: 6 }}

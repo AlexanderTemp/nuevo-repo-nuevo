@@ -1,4 +1,3 @@
-import { Box } from '@mui/material'
 import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { HistorialServicios } from './modules/HistorialServicios'
@@ -45,14 +44,7 @@ function App() {
   }, [])
 
   return (
-    <Box
-      sx={{
-        overflowX: 'hidden',
-        width: '100%',
-        maxWidth: '100vw',
-        minHeight: '100vh',
-      }}
-    >
+    <>
       {/* {cargando && (
         <Stack
           minHeight="70dvh"
@@ -77,10 +69,10 @@ function App() {
       <HistorialServicios
         inhabilitarAcceso={() => {}}
         // token={tokenLocal}
-        token={token || ''}
+        token={token ?? ''}
       />
       {/* )} */}
-    </Box>
+    </>
   )
 }
 
