@@ -66,6 +66,11 @@ function App() {
       )} */}
 
       {/* {!cargando && acceso && ( */}
+      <pre
+        style={{ background: '#f5f5f5', padding: '10px', borderRadius: '6px' }}
+      >
+        {window.location.href}
+      </pre>
       <HistorialServicios
         inhabilitarAcceso={() => {}}
         // token={tokenLocal}
