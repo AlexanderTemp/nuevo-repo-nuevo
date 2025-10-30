@@ -46,12 +46,12 @@ cp .env.example .env
 
 Configura tu archivo `.env` según el ambiente:
 
-| Variable         | Descripción                | Valores Posibles / Ejemplo                                                                   |
-| ---------------- | -------------------------- | -------------------------------------------------------------------------------------------- |
-| `VITE_APP_ENV`   | Ambiente de ejecución      | `development` \| `test` \| `production`                                                      |
-| `VITE_SITE_NAME` | Nombre de la plataforma    | `"Plataforma de Interoperabilidad - v1"`                                                     |
-| `VITE_PATH`      | Ruta base de la aplicación | `""` (vacío si está en root) o `"proyectos-base/agetic-next-base-frontend"`                  |
-| `VITE_BASE_URL`  | URL del API backend        | `http://localhost:3000/api` (dev)<br/>`https://proyecto-base.test.gtic.gob.bo/ws/api` (test) |
+| Variable         | Descripción                | Valores Posibles / Ejemplo               |
+| ---------------- | -------------------------- | ---------------------------------------- |
+| `VITE_APP_ENV`   | Ambiente de ejecución      | `development` \| `test` \| `production`  |
+| `VITE_SITE_NAME` | Nombre de la plataforma    | `"Plataforma de Interoperabilidad - v1"` |
+| `VITE_PATH`      | Ruta base de la aplicación | `URL_FRONTEND`                           |
+| `VITE_BASE_URL`  | URL del API backend        | `http://localhost:3000/api` (dev)        |
 
 ## 📦 Build para Producción
 
