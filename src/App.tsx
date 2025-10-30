@@ -49,7 +49,14 @@ function App() {
   }, [])
 
   return (
-    <Box>
+    <Box
+      sx={{
+        overflowX: 'hidden',
+        width: '100%',
+        maxWidth: '100vw',
+        minHeight: '100vh',
+      }}
+    >
       {/* {cargando && (
         <Stack
           minHeight="70dvh"

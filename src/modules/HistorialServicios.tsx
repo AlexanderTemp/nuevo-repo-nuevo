@@ -88,11 +88,7 @@ export const HistorialServicios = ({ token, inhabilitarAcceso }: IProps) => {
   }, [error])
 
   return (
-    <Box
-      width="100%"
-      minHeight="100dvh"
-      sx={{ bgcolor: ColorCiudadania.light }}
-    >
+    <Box minHeight="100dvh" sx={{ bgcolor: ColorCiudadania.light }}>
       <pre>{token}</pre>
       <Box px={2} py={4}>
         <Typography variant="h4" fontWeight="600" color="white">
@@ -100,7 +96,6 @@ export const HistorialServicios = ({ token, inhabilitarAcceso }: IProps) => {
         </Typography>
       </Box>
       <Box
-        width={'100%'}
         px={{ xs: 2, md: 6 }}
         py={2}
         borderRadius="24px"
