@@ -1,47 +1,43 @@
-import { Alert, Box, CircularProgress, Stack, Typography } from '@mui/material'
-import { useEffect, useState } from 'react'
+import { Box } from '@mui/material'
+import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { delay } from './utils/utilidades'
-import { imprimir } from './utils/imprimir'
-import { verificarToken } from './utils/token'
-import { obtenerAccesoTokenMovil } from './actions/hitorial-solicitud.action'
 import { HistorialServicios } from './modules/HistorialServicios'
 
 function App() {
   const [searchParams] = useSearchParams()
-  const [cargando, setCargando] = useState(false)
-  const [acceso, setAcceso] = useState(false)
-  const [tokenLocal, setTokenLocal] = useState<string>('')
+  // const [cargando, setCargando] = useState(false)
+  // const [acceso, setAcceso] = useState(false)
+  // const [tokenLocal, setTokenLocal] = useState<string>('')
 
   const token = searchParams.get('t')
 
-  const validarSesionMovil = async () => {
-    try {
-      setCargando(true)
-      if (!token || !verificarToken(token)) {
-        setAcceso(false)
-        return
-      }
+  // const validarSesionMovil = async () => {
+  //   try {
+  //     setCargando(true)
+  //     if (!token || !verificarToken(token)) {
+  //       setAcceso(false)
+  //       return
+  //     }
 
-      const res = await obtenerAccesoTokenMovil(token)
-      await delay(300)
+  //     const res = await obtenerAccesoTokenMovil(token)
+  //     await delay(300)
 
-      if (res.fallido) {
-        setAcceso(false)
-        return
-      }
+  //     if (res.fallido) {
+  //       setAcceso(false)
+  //       return
+  //     }
 
-      if (res.token) {
-        imprimir(`Token ✅: ${res.token}`)
-        setTokenLocal(res.token)
-      }
-    } catch (error) {
-      imprimir('Error', error)
-      setAcceso(false)
-    } finally {
-      setCargando(false)
-    }
-  }
+  //     if (res.token) {
+  //       imprimir(`Token ✅: ${res.token}`)
+  //       setTokenLocal(res.token)
+  //     }
+  //   } catch (error) {
+  //     imprimir('Error', error)
+  //     setAcceso(false)
+  //   } finally {
+  //     setCargando(false)
+  //   }
+  // }
 
   useEffect(() => {
     // validarSesionMovil()
@@ -79,7 +75,7 @@ function App() {
 
       {/* {!cargando && acceso && ( */}
       <HistorialServicios
-        inhabilitarAcceso={() => setAcceso(false)}
+        inhabilitarAcceso={() => {}}
         // token={tokenLocal}
         token={token || ''}
       />
