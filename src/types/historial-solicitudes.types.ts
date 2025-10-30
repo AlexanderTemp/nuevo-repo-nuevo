@@ -1,4 +1,4 @@
-import { ThemeMode } from '@/themes/ThemeRegistry'
+import { ThemeMode } from '../themes/ThemeRegistry'
 import dayjs from 'dayjs'
 
 export const ColorCiudadania: Record<ThemeMode, string> = {

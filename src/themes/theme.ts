@@ -1,48 +1,47 @@
 import { createTheme, PaletteOptions, ThemeOptions } from '@mui/material/styles'
-import { Gantari } from 'next/font/google'
 import { componentOverrides } from './ index'
 
-export const PoppinsFont = Gantari({
-  subsets: ['latin'],
-  style: ['normal'],
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
-  display: 'swap',
-})
+// export const PoppinsFont = Gantari({
+//   subsets: ['latin'],
+//   style: ['normal'],
+//   weight: ['300', '400', '500', '600', '700', '800', '900'],
+//   display: 'swap',
+// })
 
 const typography: ThemeOptions['typography'] = {
-  fontFamily: PoppinsFont.style.fontFamily,
+  // fontFamily: PoppinsFont.style.fontFamily,
   h1: {
-    fontFamily: PoppinsFont.style.fontFamily,
+    // fontFamily: PoppinsFont.style.fontFamily,
     fontSize: 35,
     fontWeight: 700,
     lineHeight: 1.2,
   },
   h2: {
-    fontFamily: PoppinsFont.style.fontFamily,
+    // fontFamily: PoppinsFont.style.fontFamily,
     fontSize: 30,
     fontWeight: 700,
     lineHeight: 1.2,
   },
   h3: {
-    fontFamily: PoppinsFont.style.fontFamily,
+    // fontFamily: PoppinsFont.style.fontFamily,
     fontSize: 26,
     fontWeight: 600,
     lineHeight: 1.3,
   },
   h4: {
-    fontFamily: PoppinsFont.style.fontFamily,
+    // fontFamily: PoppinsFont.style.fontFamily,
     fontSize: 22,
     fontWeight: 600,
     lineHeight: 1.3,
   },
   h5: {
-    fontFamily: PoppinsFont.style.fontFamily,
+    // fontFamily: PoppinsFont.style.fontFamily,
     fontSize: 20,
     fontWeight: 500,
     lineHeight: 1.4,
   },
   h6: {
-    fontFamily: PoppinsFont.style.fontFamily,
+    // fontFamily: PoppinsFont.style.fontFamily,
     fontSize: 18,
     fontWeight: 500,
     lineHeight: 1.4,

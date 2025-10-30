@@ -1,8 +1,5 @@
-'use client'
-
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
 import {
   createContext,
   ReactNode,
@@ -11,12 +8,11 @@ import {
   useRef,
   useState,
 } from 'react'
-import { theme, darkTheme } from '@/themes/theme'
+import { theme, darkTheme } from './theme'
 import { useMediaQuery } from '@mui/material'
-
 import { useDebouncedCallback } from 'use-debounce'
-import { guardarCookie, leerCookie } from '@/utils'
-import { imprimir } from '@/utils/imprimir'
+import { guardarCookie, leerCookie } from '../utils/cookies'
+import { imprimir } from '../utils/imprimir'
 import { ScrollbarGlobalStyles } from './GlobalCssStyle'
 
 const DARK_SCHEME_QUERY = '(prefers-color-scheme: dark)'
@@ -26,15 +22,14 @@ export type ThemeMode = 'light' | 'dark'
 interface ThemeContextType {
   themeMode: ThemeMode
   toggleTheme: () => void
-
   guardarModoOscuro: () => void
 }
 
 const ThemeContext = createContext<ThemeContextType>({} as ThemeContextType)
 export const useThemeContext = () => useContext(ThemeContext)
+
 export default function ThemeRegistry({ children }: { children: ReactNode }) {
   const isDarkOS = useMediaQuery(DARK_SCHEME_QUERY)
-
   const isMountRef = useRef(false)
 
   const [themeMode, setThemeMode] = useState<ThemeMode>(
@@ -72,6 +67,7 @@ export default function ThemeRegistry({ children }: { children: ReactNode }) {
         guardarModoClaro()
         break
       default:
+        break
     }
   }
 
@@ -97,8 +93,6 @@ export default function ThemeRegistry({ children }: { children: ReactNode }) {
         break
     }
     isMountRef.current = false
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -113,14 +107,11 @@ export default function ThemeRegistry({ children }: { children: ReactNode }) {
     <ThemeContext.Provider
       value={{ themeMode, toggleTheme, guardarModoOscuro }}
     >
-      <AppRouterCacheProvider>
-        <ThemeProvider theme={themeMode === 'light' ? theme : darkTheme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <ScrollbarGlobalStyles isDark={themeMode === 'dark'} />
-          <CssBaseline />
-          {children}
-        </ThemeProvider>
-      </AppRouterCacheProvider>
+      <ThemeProvider theme={themeMode === 'light' ? theme : darkTheme}>
+        <ScrollbarGlobalStyles isDark={themeMode === 'dark'} />
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
     </ThemeContext.Provider>
   )
 }

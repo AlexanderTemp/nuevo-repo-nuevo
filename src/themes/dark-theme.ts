@@ -1,13 +1,13 @@
 import { createTheme } from '@mui/material'
 import { alpha } from '@mui/material/styles'
-import { Manrope } from 'next/font/google'
+// import { Manrope } from 'next/font/google'
 
-const ManropeFont = Manrope({
-  subsets: ['latin'],
-  style: ['normal'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  display: 'swap',
-})
+// const ManropeFont = Manrope({
+//   subsets: ['latin'],
+//   style: ['normal'],
+//   weight: ['300', '400', '500', '600', '700', '800'],
+//   display: 'swap',
+// })
 
 export const darkTheme = createTheme({
   palette: {
@@ -33,7 +33,7 @@ export const darkTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: ManropeFont.style.fontFamily,
+    // fontFamily: ManropeFont.style.fontFamily,
   },
   components: {
     MuiAppBar: {
