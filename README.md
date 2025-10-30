@@ -1,73 +1,64 @@
-# React + TypeScript + Vite
+# MyINFO Frontend IOPv1
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🛠️ Stack Tecnológico
 
-Currently, two official plugins are available:
+### Core
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19.1.1** - Librería UI
+- **TypeScript 5.9** - Lenguaje tipado
+- **Vite 7** - Build tool y dev server
+- **React Router DOM 7** - Enrutamiento
 
-## React Compiler
+### UI & Styling
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Material-UI 7.3** - Sistema de componentes
+- **Emotion** - CSS-in-JS
+- **Iconify** - Librería de iconos
 
-## Expanding the ESLint configuration
+### Estado & Datos
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **SWR 2.3** - Data fetching y caché
+- **Axios 1.13** - Cliente HTTP
+- **React Hook Form 7.65** - Gestión de formularios
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Inicio Rápido
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Prerrequisitos
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+Node.js >= 22.x
+npm >= 9.x
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Instalación
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+git clone git@gitlab.agetic.gob.bo:agetic/iop/v1/my-info-v1/my-info-v1-frontend.git
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Instalar dependencias
+npm install
+
+# Configurar variables de entorno
+cp .env.example .env
+```
+
+### Variables de Entorno
+
+Configura tu archivo `.env` según el ambiente:
+
+| Variable              | Descripción                  | Valores Posibles / Ejemplo                                                                   | Requerido |
+| --------------------- | ---------------------------- | -------------------------------------------------------------------------------------------- | --------- |
+| `VITE_APP_ENV`        | Ambiente de ejecución        | `development` \| `test` \| `production`                                                      | ✅        |
+| `VITE_SITE_NAME`      | Nombre de la plataforma      | `"Plataforma de Interoperabilidad - v1"`                                                     | ✅        |
+| `VITE_PATH`           | Ruta base de la aplicación   | `""` (vacío si está en root) o `"proyectos-base/agetic-next-base-frontend"`                  | ❌        |
+| `VITE_BASE_URL`       | URL del API backend          | `http://localhost:3000/api` (dev)<br/>`https://proyecto-base.test.gtic.gob.bo/ws/api` (test) | ✅        |
+| `VITE_CIUDADANIA_URL` | Portal de Ciudadanía Digital | `https://portal-cd3.dev.agetic.gob.bo/`                                                      | ✅        |
+
+## 📦 Build para Producción
+
+```bash
+# Generar build optimizado
+npm run build
+
+# La carpeta dist/ contendrá los archivos estáticos
 ```
