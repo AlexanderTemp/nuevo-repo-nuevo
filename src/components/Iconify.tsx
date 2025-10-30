@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import { Icon } from '@iconify/react'
 import { Box, BoxProps } from '@mui/material'
-import { IconifyProps } from '@/types/icon.types'
+import { IconifyProps } from '../types/icon.types'
 
 interface Props extends BoxProps {
   icon: IconifyProps

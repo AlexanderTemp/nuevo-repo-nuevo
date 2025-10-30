@@ -16,8 +16,8 @@ import {
 } from '../types/historial-solicitudes.types'
 
 import { useAlertaProgreso } from '../hooks/useAlertaProgreso'
-import Iconify from '@/components/Iconos/iconify'
-import { Icons } from '@/types/icon.types'
+import Iconify from '../components/Iconify'
+import { Icons } from '../types/icon.types'
 import { AppBarWS } from './AppBarWS'
 import { CardWS } from './CardWS'
 import { toast } from 'sonner'
@@ -73,7 +73,8 @@ export const HistorialServicios = ({ token, inhabilitarAcceso }: IProps) => {
     } catch (error) {
       imprimir(error)
       cerrarProgreso()
-      toast.error({ error: 'Error al obtener el reporte' })
+
+      toast.error('Error al obtener el reporte')
       inhabilitarAcceso()
     } finally {
       cerrarProgreso()
@@ -92,6 +93,7 @@ export const HistorialServicios = ({ token, inhabilitarAcceso }: IProps) => {
       minHeight="100dvh"
       sx={{ bgcolor: ColorCiudadania.light }}
     >
+      <pre>{token}</pre>
       <Box px={2} py={4}>
         <Typography variant="h4" fontWeight="600" color="white">
           Historial de accesos a mis datos
@@ -126,7 +128,7 @@ export const HistorialServicios = ({ token, inhabilitarAcceso }: IProps) => {
               </Typography>
               <Grid container spacing={3}>
                 {elem.solicitudes.map((elem2, index2) => (
-                  <Grid key={index2} item size={{ xs: 12, md: 6 }}>
+                  <Grid key={index2}>
                     <CardWS {...elem2} />
                   </Grid>
                 ))}

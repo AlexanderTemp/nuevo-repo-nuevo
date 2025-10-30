@@ -31,7 +31,7 @@ export const useHistorialSolicitudes = ({
   const [isInitialized, setIsInitialized] = useState(false)
 
   const keyHistorial = (pagina: number) => [
-    `historial-solicitudes`,
+    `info/consultar`,
     {
       headers: {
         accept: 'application/json',

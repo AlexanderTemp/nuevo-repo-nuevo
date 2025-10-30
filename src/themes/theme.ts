@@ -9,6 +9,7 @@ import { componentOverrides } from './ index'
 // })
 
 const typography: ThemeOptions['typography'] = {
+  fontFamily: '"Poppins", "Roboto", "Helvetica", "Arial", sans-serif',
   // fontFamily: PoppinsFont.style.fontFamily,
   h1: {
     // fontFamily: PoppinsFont.style.fontFamily,

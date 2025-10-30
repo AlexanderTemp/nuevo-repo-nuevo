@@ -1,8 +1,5 @@
 'use client'
 
-import { FormInputAutocomplete } from '@/components/form/FormInputAutocomplete'
-import { FormInputDropdown } from '@/components/form'
-
 import { IconoTooltip } from '../components/botones/IconoTooltip'
 import { Icono } from '../components/Icono'
 import { crearArrayAnios, obtenerMesesDisponibles } from '../utils/utilidades'
@@ -167,88 +164,6 @@ export const AppBarWS = ({
           />
         </Box>
       </Stack>
-      <Collapse in={isFilterOpen} timeout={300} unmountOnExit>
-        <Grid container sx={{}} spacing={2} mt={1}>
-          {error && (
-            <Grid item xs={12}>
-              <Typography>Ocurrió un error al obtener los filtros.</Typography>
-            </Grid>
-          )}
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <FormInputAutocomplete
-              id={'entidadSolicitante'}
-              name={'entidadSolicitante'}
-              control={control}
-              label={'Entidad solicitante'}
-              size="small"
-              options={opcionesEntidadSolicitante}
-              onChange={(elem: any) =>
-                cambioFiltros({ entidadSolicitante: elem?.value ?? '' })
-              }
-              disabled={cargando}
-              renderOption={(option) => <>{option.label}</>}
-              getOptionLabel={(option) => option.label}
-              isOptionEqualToValue={(option, value) => {
-                if (!option || !value) return option === value
-                return option.value === (value?.value || value)
-              }}
-              clearable
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <FormInputAutocomplete
-              id={'entidadFuente'}
-              name={'entidadFuente'}
-              control={control}
-              label={'Entidad fuente de información'}
-              size={'small'}
-              onChange={(elem: any) =>
-                cambioFiltros({ entidadFuente: elem?.value ?? '' })
-              }
-              options={opcionesEntidadFuente}
-              disabled={cargando}
-              renderOption={(option) => <>{option.label}</>}
-              getOptionLabel={(option) => option.label}
-              isOptionEqualToValue={(option, value) => {
-                if (!option || !value) return option === value
-                return option.value === (value?.value || value)
-              }}
-              clearable
-            />
-          </Grid>
-          <Grid item xs={6} md={4} lg={3}>
-            <FormInputDropdown
-              id={'mes'}
-              name={'mes'}
-              control={control}
-              label={'Mes'}
-              size={'small'}
-              options={meses.map((m, index) => ({
-                key: `${index}`,
-                value: `${index + 1}`,
-                label: m,
-              }))}
-              disabled={cargando}
-              clearable
-            />
-          </Grid>
-          <Grid item xs={6} md={4} lg={3}>
-            <FormInputDropdown
-              id={'anio'}
-              name={'anio'}
-              control={control}
-              label={'Año'}
-              size={'small'}
-              options={(aniosArray || []).map((a) => ({
-                key: `${a}`,
-                value: `${a}`,
-                label: `${a}`,
-              }))}
-              disabled={cargando}
-            />
-          </Grid>
-        </Grid>
-      </Collapse>
     </>
   )
 }
