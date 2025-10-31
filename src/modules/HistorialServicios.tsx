@@ -21,6 +21,8 @@ import { Icons } from '../types/icon.types'
 import { CardWS } from './CardWS'
 import { toast } from 'sonner'
 import { AppBarWS } from './AppBarWS'
+import { leerCookie } from '../utils/cookies'
+import { decodeToken } from 'react-jwt'
 
 interface IProps {
   token: string
@@ -82,8 +84,15 @@ export const HistorialServicios = ({ token, inhabilitarAcceso }: IProps) => {
     }
   }
 
+  const [userInfo, setUserInfo] = useState<any>()
+
   useEffect(() => {
     imprimir(error)
+
+    const token = leerCookie('token')
+    console.log('📣', JSON.stringify(token))
+    setUserInfo(decodeToken(token ?? ''))
+
     if (error) inhabilitarAcceso()
   }, [error])
 
@@ -110,6 +119,9 @@ export const HistorialServicios = ({ token, inhabilitarAcceso }: IProps) => {
           cargandoReporte={cargaReporte}
           obtenerReporte={obtenerReporte}
         />
+
+        <pre>{JSON.stringify(userInfo, null, 2)}</pre>
+
         <Stack width="100%" height="100%" minHeight="75dvh">
           {itemsPorMes.map((elem, index) => (
             <Stack
