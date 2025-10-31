@@ -109,6 +109,7 @@ export const HistorialServicios = ({ token, inhabilitarAcceso }: IProps) => {
         borderRadius="24px"
         bgcolor="background.paper"
       >
+        hola
         <AppBarWS
           datosVacios={items.length == 0}
           cargandoDatos={cargando}
@@ -119,9 +120,7 @@ export const HistorialServicios = ({ token, inhabilitarAcceso }: IProps) => {
           cargandoReporte={cargaReporte}
           obtenerReporte={obtenerReporte}
         />
-
         <pre>{JSON.stringify(userInfo, null, 2)}</pre>
-
         <Stack width="100%" height="100%" minHeight="75dvh">
           {itemsPorMes.map((elem, index) => (
             <Stack
