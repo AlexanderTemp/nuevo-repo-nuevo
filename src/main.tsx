@@ -1,15 +1,16 @@
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.tsx'
 import { Toaster } from 'sonner'
-import { BrowserRouter } from 'react-router-dom'
+import { RouterProvider } from 'react-router-dom'
 import React from 'react'
+import router from './routes/index.tsx'
+import ThemeRegistry from './themes/ThemeRegistry.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <ThemeRegistry>
+      <RouterProvider router={router} />
       <Toaster richColors closeButton />
-      <App />
-    </BrowserRouter>
+    </ThemeRegistry>
   </React.StrictMode>
 )

@@ -21,7 +21,6 @@ import { Icons } from '../types/icon.types'
 import { CardWS } from './CardWS'
 import { toast } from 'sonner'
 import { AppBarWS } from './AppBarWS'
-import { decodeToken } from 'react-jwt'
 
 interface IProps {
   token: string
@@ -94,10 +93,6 @@ export const HistorialServicios = ({ token, inhabilitarAcceso }: IProps) => {
         <Typography variant="h4" fontWeight="600" color="white">
           Historial de accesos a mis datos
         </Typography>
-        <Typography>TOKEN TOKEN</Typography>
-        <pre>{token}</pre>
-
-        <Typography>{decodeToken(token)}</Typography>
       </Box>
       <Box
         px={{ xs: 2, md: 6 }}
