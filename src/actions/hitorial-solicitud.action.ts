@@ -17,6 +17,7 @@ import {
   type IReporte,
   type IFiltroHistorial,
 } from '../types/historial-solicitudes.types'
+// import { leerCookie } from '../utils/cookies'
 
 export const useHistorialSolicitudes = ({
   filtro,
@@ -30,12 +31,17 @@ export const useHistorialSolicitudes = ({
   const loadMoreRef = useRef<HTMLDivElement | null>(null)
   const [isInitialized, setIsInitialized] = useState(false)
 
+  imprimir(token)
+
+  const tokenForzado =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyMyIsInVzdWFyaW8iOiI2ODc1OTEyIiwibm9tYnJlcyI6IkFMRUlEQSIsInByaW1lckFwZWxsaWRvIjoiIiwic2VndW5kb0FwZWxsaWRvIjoiIiwicm9sZXMiOltdLCJpZFJvbCI6IiIsInJvbCI6IiIsImlhdCI6MTc2MTkxNzQ1NiwiZXhwIjoxNzYyMDE3NDU1fQ.f3VRKXekOJf3WhbVrFZt7WQJCZHxnpzyAm5BcRTotUI'
+
   const keyHistorial = (pagina: number) => [
-    `info/consultar`,
+    `http://192.168.21.69:3001/info/consultar`,
     {
       headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${tokenForzado}`,
       },
       params: {
         pagina,
@@ -103,7 +109,7 @@ export const useHistorialSolicitudes = ({
   const allItems: IHistorialTemporal[] = useMemo(() => {
     if (!data) return []
 
-    return data.flatMap((pageData) => pageData?.datos?.filas || [])
+    return data.flatMap((pageData) => pageData?.datos || [])
   }, [data])
 
   const total = useMemo(() => {

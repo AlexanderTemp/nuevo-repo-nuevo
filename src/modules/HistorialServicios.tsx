@@ -1,7 +1,7 @@
 'use client'
 
 import { Box, CircularProgress, Grid, Stack, Typography } from '@mui/material'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { capitalize } from '../utils/utilidades'
 import {
   obtenerReporteHistorial,
@@ -21,8 +21,6 @@ import { Icons } from '../types/icon.types'
 import { CardWS } from './CardWS'
 import { toast } from 'sonner'
 import { AppBarWS } from './AppBarWS'
-import { leerCookie } from '../utils/cookies'
-import { decodeToken } from 'react-jwt'
 
 interface IProps {
   token: string
@@ -41,18 +39,11 @@ export const HistorialServicios = ({ token, inhabilitarAcceso }: IProps) => {
   const [cargaReporte, setCargaReporte] = useState(false)
   const [filtro, setFiltro] = useState<IFiltroHistorial>(inicialFiltroHistorial)
 
-  const {
-    items,
-    hasMore,
-    itemsPorMes,
-    loadMoreRef,
-    cargando,
-    actualizar,
-    error,
-  } = useHistorialSolicitudes({
-    filtro,
-    token,
-  })
+  const { items, hasMore, itemsPorMes, loadMoreRef, cargando, actualizar } =
+    useHistorialSolicitudes({
+      filtro,
+      token,
+    })
 
   const actualizarDatos = async () => {
     setFiltro(inicialFiltroHistorial)
@@ -84,17 +75,17 @@ export const HistorialServicios = ({ token, inhabilitarAcceso }: IProps) => {
     }
   }
 
-  const [userInfo, setUserInfo] = useState<any>()
+  // const [userInfo, setUserInfo] = useState<any>()
 
-  useEffect(() => {
-    imprimir(error)
+  // useEffect(() => {
+  //   imprimir(error)
 
-    const token = leerCookie('token')
-    console.log('📣', JSON.stringify(token))
-    setUserInfo(decodeToken(token ?? ''))
+  //   const token = leerCookie('token')
+  //   console.log('📣', JSON.stringify(token))
+  //   setUserInfo(decodeToken(token ?? ''))
 
-    if (error) inhabilitarAcceso()
-  }, [error])
+  //   if (error) inhabilitarAcceso()
+  // }, [error])
 
   return (
     <Box minHeight="100dvh" sx={{ bgcolor: ColorCiudadania.light }}>
@@ -120,7 +111,7 @@ export const HistorialServicios = ({ token, inhabilitarAcceso }: IProps) => {
           cargandoReporte={cargaReporte}
           obtenerReporte={obtenerReporte}
         />
-        <pre>{JSON.stringify(userInfo, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(userInfo, null, 2)}</pre> */}
         <Stack width="100%" height="100%" minHeight="75dvh">
           {itemsPorMes.map((elem, index) => (
             <Stack
@@ -133,7 +124,7 @@ export const HistorialServicios = ({ token, inhabilitarAcceso }: IProps) => {
               </Typography>
               <Grid container spacing={3}>
                 {elem.solicitudes.map((elem2, index2) => (
-                  <Grid key={index2}>
+                  <Grid key={index2} size={{ xs: 12, md: 6 }}>
                     <CardWS {...elem2} />
                   </Grid>
                 ))}

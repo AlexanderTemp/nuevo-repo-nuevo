@@ -3,19 +3,16 @@
 import { IconoTooltip } from '../components/botones/IconoTooltip'
 import { Icono } from '../components/Icono'
 import { crearArrayAnios, obtenerMesesDisponibles } from '../utils/utilidades'
-import { Box, Collapse, Grid, Stack, Typography, useTheme } from '@mui/material'
+import { Box, Collapse, Grid, Stack } from '@mui/material'
 import dayjs from 'dayjs'
 import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
-
-import { useFiltroHistorial } from '../actions/hitorial-solicitud.action'
 import { useThemeContext } from '../themes/ThemeRegistry'
 import {
   ColorCiudadania,
   IFiltroHistorial,
   inicialFiltroHistorial,
 } from '../types/historial-solicitudes.types'
-import { FormInputAutocomplete } from '../components/form/FormInputAutocomplete'
 import { FormInputDropdown } from '../components/form'
 
 interface Props {
@@ -37,15 +34,11 @@ export const AppBarWS = ({
   actualizar,
   cargandoDatos,
   setFiltros,
-  datosVacios,
   filtros,
-  obtenerReporte,
-  token,
-  cargandoReporte,
 }: Props) => {
-  const { palette } = useTheme()
-  const { cargando, error, entidades } = useFiltroHistorial(token)
-  const [isFilterOpen, setIsFilterOpen] = useState(false)
+  // const { palette } = useTheme()
+  // const { cargando, error, entidades } = useFiltroHistorial(token)
+  const [isFilterOpen] = useState(false)
   const { themeMode } = useThemeContext()
   const { current: ciudadaniaColor } = useRef<string>(
     ColorCiudadania[themeMode]
@@ -67,25 +60,25 @@ export const AppBarWS = ({
 
   const [meses, setMeses] = useState<string[]>([])
 
-  const opcionesEntidadFuente = entidades?.fuente?.filas.map(
-    (entidad, index) => ({
-      key: `key-entidades-fuente-${entidad?.entidadPublicadoraGobBo?.toString()}-${index}`,
-      value: entidad?.entidadPublicadoraGobBo
-        ? entidad?.entidadPublicadoraGobBo?.toString()
-        : '',
-      label: `${entidad?.entidadPublicadoraSigla} - ${entidad?.entidadPublicadoraNombre}`,
-    })
-  )
+  // const opcionesEntidadFuente = entidades?.fuente?.filas.map(
+  //   (entidad, index) => ({
+  //     key: `key-entidades-fuente-${entidad?.entidadPublicadoraGobBo?.toString()}-${index}`,
+  //     value: entidad?.entidadPublicadoraGobBo
+  //       ? entidad?.entidadPublicadoraGobBo?.toString()
+  //       : '',
+  //     label: `${entidad?.entidadPublicadoraSigla} - ${entidad?.entidadPublicadoraNombre}`,
+  //   })
+  // )
 
-  const opcionesEntidadSolicitante = entidades?.solicitante?.filas.map(
-    (entidad, index) => ({
-      key: `key-entidades-solicitante-${entidad?.entidadConsumidoraGobBo?.toString()}-${index}`,
-      value: entidad?.entidadConsumidoraGobBo
-        ? entidad?.entidadConsumidoraGobBo?.toString()
-        : '',
-      label: `${entidad?.entidadConsumidoraSigla} - ${entidad?.entidadConsumidoraNombre}`,
-    })
-  )
+  // const opcionesEntidadSolicitante = entidades?.solicitante?.filas.map(
+  //   (entidad, index) => ({
+  //     key: `key-entidades-solicitante-${entidad?.entidadConsumidoraGobBo?.toString()}-${index}`,
+  //     value: entidad?.entidadConsumidoraGobBo
+  //       ? entidad?.entidadConsumidoraGobBo?.toString()
+  //       : '',
+  //     label: `${entidad?.entidadConsumidoraSigla} - ${entidad?.entidadConsumidoraNombre}`,
+  //   })
+  // )
 
   useEffect(() => {
     // eslint-disable-next-line
@@ -131,7 +124,7 @@ export const AppBarWS = ({
           }}
         />
         <Box>
-          <IconoTooltip
+          {/* <IconoTooltip
             id={`download`}
             name={`download`}
             titulo={'Descargar'}
@@ -149,8 +142,8 @@ export const AppBarWS = ({
               </Icono>
             }
             accion={obtenerReporte}
-          />
-          <IconoTooltip
+          /> */}
+          {/* <IconoTooltip
             id={`filter`}
             name={`filter`}
             titulo={'Filtrar'}
@@ -163,17 +156,17 @@ export const AppBarWS = ({
             accion={() => {
               setIsFilterOpen(!isFilterOpen)
             }}
-          />
+          /> */}
         </Box>
       </Stack>
       <Collapse in={isFilterOpen} timeout={300} unmountOnExit>
         <Grid container sx={{}} spacing={2} mt={1}>
-          {error && (
+          {/* {error && (
             <Grid size={12}>
               <Typography>Ocurrió un error al obtener los filtros.</Typography>
             </Grid>
-          )}
-          <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+          )} */}
+          {/* <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
             <FormInputAutocomplete
               id={'entidadSolicitante'}
               name={'entidadSolicitante'}
@@ -214,7 +207,7 @@ export const AppBarWS = ({
               }}
               clearable
             />
-          </Grid>
+          </Grid> */}
 
           <Grid size={{ xs: 12, md: 4, lg: 3 }}>
             <FormInputDropdown
@@ -228,7 +221,6 @@ export const AppBarWS = ({
                 value: `${index + 1}`,
                 label: m,
               }))}
-              disabled={cargando}
               clearable
             />
           </Grid>
@@ -245,7 +237,6 @@ export const AppBarWS = ({
                 value: `${a}`,
                 label: `${a}`,
               }))}
-              disabled={cargando}
             />
           </Grid>
         </Grid>
