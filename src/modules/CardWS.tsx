@@ -67,7 +67,9 @@ export const CardWS = ({
             <Typography fontWeight={600} fontSize="inherit">
               Objeto:{' '}
               <Typography fontWeight={400} component="span" fontSize="inherit">
-                {servicioObjeto}
+                {servicioObjeto === 'Contrastar campo a campo'
+                  ? 'Contrastación con SEGIP'
+                  : servicioObjeto}
               </Typography>
             </Typography>
           </Stack>

@@ -100,7 +100,6 @@ export const HistorialServicios = ({ token, inhabilitarAcceso }: IProps) => {
         borderRadius="24px"
         bgcolor="background.paper"
       >
-        hola
         <AppBarWS
           datosVacios={items.length == 0}
           cargandoDatos={cargando}
